@@ -137,41 +137,6 @@ const Index = () => {
             </Card>
           )}
         </div>
-
-        {/* Features */}
-        <div className="max-w-5xl mx-auto mt-20">
-          <div className="grid md:grid-cols-3 gap-8">
-            <Card className="border-0 shadow-lg bg-white/70 backdrop-blur-sm hover:shadow-xl transition-all duration-300 group">
-              <CardContent className="p-8 text-center">
-                <div className="w-14 h-14 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <Search className="w-7 h-7 text-orange-600" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">Smart Context</h3>
-                <p className="text-gray-600 leading-relaxed">Generates queries that feel natural and authentic for each specific platform and audience</p>
-              </CardContent>
-            </Card>
-            
-            <Card className="border-0 shadow-lg bg-white/70 backdrop-blur-sm hover:shadow-xl transition-all duration-300 group">
-              <CardContent className="p-8 text-center">
-                <div className="w-14 h-14 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <div className="w-7 h-7 bg-gradient-to-br from-orange-500 to-orange-600 rounded-lg"></div>
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">Brand Integration</h3>
-                <p className="text-gray-600 leading-relaxed">Seamlessly blends brand messaging with organic search patterns for maximum effectiveness</p>
-              </CardContent>
-            </Card>
-            
-            <Card className="border-0 shadow-lg bg-white/70 backdrop-blur-sm hover:shadow-xl transition-all duration-300 group">
-              <CardContent className="p-8 text-center">
-                <div className="w-14 h-14 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <div className="w-7 h-7 border-2 border-orange-600 rounded-full animate-pulse"></div>
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">Realistic Animation</h3>
-                <p className="text-gray-600 leading-relaxed">Typing animation mimics real user search behavior for authentic preview experience</p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
       </div>
     </div>
   );
