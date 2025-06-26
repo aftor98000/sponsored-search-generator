@@ -1,8 +1,9 @@
 
 import React, { useState } from 'react';
-import { Search } from 'lucide-react';
+import { Search, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { Card, CardContent } from '@/components/ui/card';
 import AnimatedSearchBar from '@/components/AnimatedSearchBar';
 
 const Index = () => {
@@ -52,104 +53,123 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-orange-100">
-      <div className="container mx-auto px-6 py-12">
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-orange-100/50">
+      <div className="container mx-auto px-4 py-16 max-w-6xl">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full mb-6 shadow-lg">
+            <Sparkles className="w-8 h-8 text-white" />
+          </div>
+          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
             Sponsored Search
-            <span className="text-orange-500"> Generator</span>
+            <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent"> Generator</span>
           </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Create realistic sponsored search prompts that blend naturally with platform contexts
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Create realistic sponsored search prompts that blend naturally with platform contexts. 
+            Generate authentic-looking queries that feel organic to users.
           </p>
         </div>
 
         {/* Main Content */}
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-4xl mx-auto space-y-8">
           {/* Input Form */}
-          <div className="bg-white rounded-2xl shadow-xl p-8 mb-8 border border-orange-100">
-            <div className="grid md:grid-cols-2 gap-6 mb-8">
-              <div className="space-y-2">
-                <label className="text-sm font-semibold text-gray-700">Platform URL</label>
-                <Input
-                  type="url"
-                  placeholder="e.g., amazon.com, youtube.com"
-                  value={platformUrl}
-                  onChange={(e) => setPlatformUrl(e.target.value)}
-                  className="h-12 border-2 border-gray-200 focus:border-orange-400 rounded-xl text-base"
-                />
+          <Card className="border-0 shadow-xl bg-white/80 backdrop-blur-sm">
+            <CardContent className="p-8">
+              <div className="grid md:grid-cols-2 gap-8 mb-8">
+                <div className="space-y-3">
+                  <label className="text-sm font-semibold text-gray-800 uppercase tracking-wide">Platform URL</label>
+                  <div className="relative">
+                    <Input
+                      type="text"
+                      placeholder="e.g., amazon.com, youtube.com, reddit.com"
+                      value={platformUrl}
+                      onChange={(e) => setPlatformUrl(e.target.value)}
+                      className="h-14 pl-4 pr-4 border-2 border-gray-200 focus:border-orange-400 focus:ring-2 focus:ring-orange-100 rounded-xl text-base bg-gray-50/50 transition-all duration-200"
+                    />
+                  </div>
+                </div>
+                <div className="space-y-3">
+                  <label className="text-sm font-semibold text-gray-800 uppercase tracking-wide">Brand Name</label>
+                  <div className="relative">
+                    <Input
+                      type="text"
+                      placeholder="e.g., Nike, Apple, Tesla, Spotify"
+                      value={brandName}
+                      onChange={(e) => setBrandName(e.target.value)}
+                      className="h-14 pl-4 pr-4 border-2 border-gray-200 focus:border-orange-400 focus:ring-2 focus:ring-orange-100 rounded-xl text-base bg-gray-50/50 transition-all duration-200"
+                    />
+                  </div>
+                </div>
               </div>
-              <div className="space-y-2">
-                <label className="text-sm font-semibold text-gray-700">Brand Name</label>
-                <Input
-                  type="text"
-                  placeholder="e.g., Nike, Apple, Tesla"
-                  value={brandName}
-                  onChange={(e) => setBrandName(e.target.value)}
-                  className="h-12 border-2 border-gray-200 focus:border-orange-400 rounded-xl text-base"
-                />
-              </div>
-            </div>
 
-            <div className="text-center">
-              <Button
-                onClick={generateSearchQuery}
-                disabled={!platformUrl || !brandName || isGenerating}
-                className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-8 py-3 rounded-xl text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
-              >
-                {isGenerating ? (
-                  <div className="flex items-center space-x-2">
-                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                    <span>Generating...</span>
-                  </div>
-                ) : (
-                  <div className="flex items-center space-x-2">
-                    <Search className="w-5 h-5" />
-                    <span>Generate</span>
-                  </div>
-                )}
-              </Button>
-            </div>
-          </div>
+              <div className="text-center">
+                <Button
+                  onClick={generateSearchQuery}
+                  disabled={!platformUrl || !brandName || isGenerating}
+                  className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-10 py-4 h-14 rounded-xl text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none border-0"
+                >
+                  {isGenerating ? (
+                    <div className="flex items-center space-x-3">
+                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                      <span>Generating Search Query...</span>
+                    </div>
+                  ) : (
+                    <div className="flex items-center space-x-3">
+                      <Search className="w-5 h-5" />
+                      <span>Generate Search Query</span>
+                    </div>
+                  )}
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
 
           {/* Animated Search Result */}
           {showAnimation && generatedQuery && (
-            <div className="bg-white rounded-2xl shadow-xl p-8 border border-orange-100">
-              <h3 className="text-xl font-semibold text-gray-800 mb-6 text-center">
-                Generated Search Query
-              </h3>
-              <AnimatedSearchBar query={generatedQuery} />
-            </div>
+            <Card className="border-0 shadow-xl bg-white/90 backdrop-blur-sm animate-fade-in">
+              <CardContent className="p-8">
+                <div className="text-center mb-8">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Generated Search Query</h3>
+                  <p className="text-gray-600">Watch how your sponsored search appears to users</p>
+                </div>
+                <AnimatedSearchBar query={generatedQuery} />
+              </CardContent>
+            </Card>
           )}
         </div>
 
         {/* Features */}
-        <div className="max-w-4xl mx-auto mt-16">
+        <div className="max-w-5xl mx-auto mt-20">
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center p-6 bg-white rounded-xl shadow-lg border border-orange-100 hover:shadow-xl transition-shadow duration-300">
-              <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Search className="w-6 h-6 text-orange-600" />
-              </div>
-              <h3 className="font-semibold text-gray-800 mb-2">Smart Context</h3>
-              <p className="text-gray-600 text-sm">Generates queries that feel natural for each platform</p>
-            </div>
+            <Card className="border-0 shadow-lg bg-white/70 backdrop-blur-sm hover:shadow-xl transition-all duration-300 group">
+              <CardContent className="p-8 text-center">
+                <div className="w-14 h-14 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Search className="w-7 h-7 text-orange-600" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Smart Context</h3>
+                <p className="text-gray-600 leading-relaxed">Generates queries that feel natural and authentic for each specific platform and audience</p>
+              </CardContent>
+            </Card>
             
-            <div className="text-center p-6 bg-white rounded-xl shadow-lg border border-orange-100 hover:shadow-xl transition-shadow duration-300">
-              <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <div className="w-6 h-6 bg-orange-600 rounded-sm"></div>
-              </div>
-              <h3 className="font-semibold text-gray-800 mb-2">Brand Integration</h3>
-              <p className="text-gray-600 text-sm">Seamlessly blends brand messaging with organic search</p>
-            </div>
+            <Card className="border-0 shadow-lg bg-white/70 backdrop-blur-sm hover:shadow-xl transition-all duration-300 group">
+              <CardContent className="p-8 text-center">
+                <div className="w-14 h-14 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-7 h-7 bg-gradient-to-br from-orange-500 to-orange-600 rounded-lg"></div>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Brand Integration</h3>
+                <p className="text-gray-600 leading-relaxed">Seamlessly blends brand messaging with organic search patterns for maximum effectiveness</p>
+              </CardContent>
+            </Card>
             
-            <div className="text-center p-6 bg-white rounded-xl shadow-lg border border-orange-100 hover:shadow-xl transition-shadow duration-300">
-              <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <div className="w-6 h-6 border-2 border-orange-600 rounded-full animate-pulse"></div>
-              </div>
-              <h3 className="font-semibold text-gray-800 mb-2">Realistic Animation</h3>
-              <p className="text-gray-600 text-sm">Typing animation mimics real user search behavior</p>
-            </div>
+            <Card className="border-0 shadow-lg bg-white/70 backdrop-blur-sm hover:shadow-xl transition-all duration-300 group">
+              <CardContent className="p-8 text-center">
+                <div className="w-14 h-14 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-7 h-7 border-2 border-orange-600 rounded-full animate-pulse"></div>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Realistic Animation</h3>
+                <p className="text-gray-600 leading-relaxed">Typing animation mimics real user search behavior for authentic preview experience</p>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </div>
